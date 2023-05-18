@@ -27,18 +27,36 @@ int menu()
 
 int add_item(Item *item, int count) // 물건 추가 함수
 {
+    printf("물건의 이름?");
+    scanf("%s", item[count].item_Name);
 
+    printf("이 물건의 개당 가격은?");
+    scanf("%d", &item[count].price);
+
+    count++;
+    printf("물건이 추가되었습니다.");
+
+    return count;
 } 
 
 void print_list(Item *item, int count) // 조회 함수
 {
+    if (count == 0)
+    {
+        printf("등록된 물건이 없습니다.");
+        return; 
+    }
 
+    for (int i = 0; i < count; i++)
+    {
+
+    }
 } 
 
 void updated_item(Item *item, int count) // 수정 함수
 {
 
-} 
+}
 
 int delete_item(Item *item, int count) // 물건 삭제 함수
 {
