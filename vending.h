@@ -3,7 +3,7 @@ typedef struct
     int Number; // 물품의 번호
     char item_Name[100]; //물품의 이름
     int item_Count; //물품의 수량
-    int Price;  // 개당 가격 
+    int price;  // 개당 가격 
     char is_pointsave; //포인트 적립 유무
 } Item;
 

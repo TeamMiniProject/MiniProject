@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Mini Project 주제
  - Cafe 디저트 자판기
 
@@ -30,3 +31,6 @@
  - #### Repo Contributor
  - #### 코드 수정 및 보완
  - #### WIKI 관리
+=======
+# OSSL_MiniProject2
+>>>>>>> fad6306399b6d09e9748ad5daa28d455613273c8
