@@ -39,7 +39,7 @@ int add_item(Item *item, int count) // 물건 추가 함수
     return count;
 } 
 
-void print_list(Item *item, int count) // 조회 함수
+void print_list(Item *item, int count) // 조회함수
 {
     if (count == 0)
     {
