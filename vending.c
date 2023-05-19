@@ -161,7 +161,37 @@ void save_file(Item *item, int count, char filename[100]) // 파일 저장 함�
 
 int load_file(Item *item, char filename[100]) // 파일에서 읽어오는 함수
 {
+    FILE *file = fopen(filename, "r");
+    if (file == NULL)
+    {
+        printf(" 파일이 존재하지 않습니다. 임시로 하나를 만들겠습니다.\n");
+        return 0;
+    }
 
+    int count = -1;
+    int a = 0;
+
+    for (int i = 0; i < 100; i++)
+    {
+        if (feof(file))
+            break;
+
+        fscanf(file, "%d", &item[i].Number); // 날짜를 파일에서 읽어옴
+
+        for (int j = 0; j < 5; j++)
+        {
+            fscanf(file, " %d", &Data[i].item_Name); // 지출 내역을 파일에서 읽어옴
+        }
+        fscanf(file, "%d", &item[i].amount);    // 지출 금액을 파일에서 읽어옴
+        fscanf(file, " %[^\n]s", item[i].memo); // 메모를 파일에서 읽어옴
+        count++;
+    }
+
+    fclose(file);
+
+    printf("파일이 불러와졌습니다.\n");
+
+    return count;
 }
 
 void input_money(Item *item, int count) // 현금을 자판기에 투입하는 함수
