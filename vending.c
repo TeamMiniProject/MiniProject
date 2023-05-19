@@ -110,7 +110,7 @@ int delete_item(Item *item, int count) // 물건 삭제 함수
                 is_number = i; // 삭제할 물건 번호 찾기
         }
         if (is_number == 0)
-            printf("날짜를 잘못 입력하셨습니다 다시 입력해주세요 \n");
+            printf("번호를 잘 못 입력했습니다. 다시 입력하세요. \n");
 
         else
             break;
@@ -137,21 +137,11 @@ void save_file(Item *item, int count, char filename[100]) // 파일 저장 함�
 
     for (int i = 0; i < count; i++)
     {
+        fprintf(file, "%d", item[i].Number); // 물품의 숫자를 파일에 저장
 
-        fprintf(file, "%d %d %d ", item[i]., item[i].date.month, Data[i].date.day); // 날짜를 파일에 저장
+        fprintf(file, "%s\n", item[i].item_Name); // 물품의 이름을 파일에 저장
 
-        for (int j = 0; j < 5; j++)
-        {
-            fprintf(file, "%d ", item[i].expenses[j]); // 지출 내역을 파일에 저장
-        }
-        fprintf(file, "%d\n", item[i].amount); // 지출 금액을 파일에 저장
-
-        if (strlen(Data[count].memo) == 0)
-        {
-            strcpy(Data[count].memo, "x");
-        }
-
-        fprintf(file, "%s\n", Data[i].memo); // 메모를 파일에 저장
+        fprintf(file, "%d ", item[i].price); // 물품의 가격을 파일에 저장
     }
 
     fclose(file);
@@ -176,14 +166,15 @@ int load_file(Item *item, char filename[100]) // 파일에서 읽어오는 함�
         if (feof(file))
             break;
 
-        fscanf(file, "%d", &item[i].Number); // 날짜를 파일에서 읽어옴
+        fscanf(file, "%d", &item[i].Number); // 
 
         for (int j = 0; j < 5; j++)
         {
-            fscanf(file, " %d", &Data[i].item_Name); // 지출 내역을 파일에서 읽어옴
+            fscanf(file, " %d", &Data[i].item_Name); 
         }
-        fscanf(file, "%d", &item[i].amount);    // 지출 금액을 파일에서 읽어옴
-        fscanf(file, " %[^\n]s", item[i].memo); // 메모를 파일에서 읽어옴
+
+        fscanf(file, "%d", &item[i].amount);    
+        fscanf(file, " %[^\n]s", item[i].memo); 
         count++;
     }
 
