@@ -47,19 +47,44 @@ void print_list(Item *item, int count) // 조회 함수
         return; 
     }
 
+    printf("***** 물건 목록 *****\n");
     for (int i = 0; i < count; i++)
     {
-
+        printf("물건 이름: %s\n", item[i].item_Name);
+        printf("물건 가격: %d\n", item[i].price);
+        printf("물건 수량: %d\n", item[i].item_Count);
+        printf("--------------------\n");
     }
 } 
 
 void updated_item(Item *item, int count) // 수정 함수
 {
+    char name[100];
+    int updatedPrice;
+
+    printf("수정할 물건의 이름: ");
+    scanf("%s", name);
+
+     for (int i = 0; i < count; i++)
+    {
+        if (strcmp(item[i].item_Name, name) == 0)
+        {
+            printf("새로운 가격: ");
+            scanf("%d", &updatedPrice);
+
+            item[i].price = updatedPrice;
+
+            printf("물건 정보가 수정되었습니다.\n");
+            return;
+        }
+    }
+    printf("해당하는 이름의 물건이 없습니다.\n"); // 이곳에 오는것이 맞는가?
 
 }
 
 int delete_item(Item *item, int count) // 물건 삭제 함수
 {
+   
 
 }
 
