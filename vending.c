@@ -62,6 +62,12 @@ void updated_item(Item *item, int count) // 수정 함수
     char name[100];
     int updatedPrice;
 
+    if (count == 0)
+    {
+        printf("등록된 물건이 없습니다.");
+        return; 
+    }
+
     printf("수정할 물건의 이름: ");
     scanf("%s", name);
 
@@ -84,13 +90,73 @@ void updated_item(Item *item, int count) // 수정 함수
 
 int delete_item(Item *item, int count) // 물건 삭제 함수
 {
-   
+   if (count == 0)
+    {
+        printf("등록된 물건이 없습니다.");
+        return; 
+    }
 
+    int is_number;
+
+    updated_item(item, count);
+
+    printf("삭제할 물건의 번호를 입력하세요 ");
+
+    while (1)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            if (item[i].Number == is_number)
+                is_number = i; // 삭제할 물건 번호 찾기
+        }
+        if (is_number == 0)
+            printf("날짜를 잘못 입력하셨습니다 다시 입력해주세요 \n");
+
+        else
+            break;
+    }
+
+    for (int i = is_number; i < count - 1; i++)
+        item[i] = item[i + 1]; 
+
+    count--;
+
+    printf("지출 내역이 삭제되었습니다.\n");
+
+    return count;
 }
 
 void save_file(Item *item, int count, char filename[100]) // 파일 저장 함수
 {
+    FILE *file = fopen(filename, "w");
+    if (file == NULL)
+    {
+        printf("파일을 열 수 없습니다.\n");
+        return;
+    }
 
+    for (int i = 0; i < count; i++)
+    {
+
+        fprintf(file, "%d %d %d ", item[i]., item[i].date.month, Data[i].date.day); // 날짜를 파일에 저장
+
+        for (int j = 0; j < 5; j++)
+        {
+            fprintf(file, "%d ", item[i].expenses[j]); // 지출 내역을 파일에 저장
+        }
+        fprintf(file, "%d\n", item[i].amount); // 지출 금액을 파일에 저장
+
+        if (strlen(Data[count].memo) == 0)
+        {
+            strcpy(Data[count].memo, "x");
+        }
+
+        fprintf(file, "%s\n", Data[i].memo); // 메모를 파일에 저장
+    }
+
+    fclose(file);
+
+    printf("파일이 저장되었습니다.\n");
 }
 
 int load_file(Item *item, char filename[100]) // 파일에서 읽어오는 함수
