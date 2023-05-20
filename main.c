@@ -30,7 +30,7 @@ int main()
     while (1)
     {
         menuNumber = menu();
-        switch (menuNumber)
+        switch (menuNumber) // switch case 구문 용용
         {
         case 1:
             count = add_item(item, count); // 물건 추가하는 메뉴 
