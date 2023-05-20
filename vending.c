@@ -48,6 +48,7 @@ void print_list(Item *item, int count) // 조회함수
     }
 
     printf("***** 물건 목록 *****\n");
+
     for (int i = 0; i < count; i++)
     {
         printf("물건 이름: %s\n", item[i].item_Name);
@@ -60,6 +61,7 @@ void print_list(Item *item, int count) // 조회함수
 void updated_item(Item *item, int count) // 수정 함수
 {
     char name[100];
+    char Newname[100];
     int updatedPrice;
 
     if (count == 0)
@@ -71,20 +73,26 @@ void updated_item(Item *item, int count) // 수정 함수
     printf("수정할 물건의 이름: ");
     scanf("%s", name);
 
-     for (int i = 0; i < count; i++)
+    for (int i = 0; i < count; i++)
     {
         if (strcmp(item[i].item_Name, name) == 0)
         {
+            printf("새로운 이름: ");
+            scanf("%s", Newname);
+            
+            strcpy(item[i].item_Name, Newname); // 새로운 이름으로 수정하기
+
             printf("새로운 가격: ");
             scanf("%d", &updatedPrice);
 
-            item[i].price = updatedPrice;
+            item[i].price = updatedPrice; // 새로운 가격으로 수정하기
 
             printf("물건 정보가 수정되었습니다.\n");
             return;
         }
     }
-    printf("해당하는 이름의 물건이 없습니다.\n"); // 이곳에 오는것이 맞는가?
+
+    printf("해당하는 이름의 물건이 없습니다.\n");
 
 }
 
@@ -168,36 +176,38 @@ int load_file(Item *item, char filename[100]) // 파일에서 읽어오는 함�
 
         fscanf(file, "%d", &item[i].Number); // 
 
-        for (int j = 0; j < 5; j++)
-        {
-            fscanf(file, " %d", &Data[i].item_Name); 
-        }
+        fscanf(file, " %s", item[i].item_Name); 
 
-        fscanf(file, "%d", &item[i].amount);    
-        fscanf(file, " %[^\n]s", item[i].memo); 
+        fscanf(file, "%d", &item[i].price);
+
         count++;
     }
 
     fclose(file);
 
-    printf("파일이 불러와졌습니다.\n");
+    printf("파일 불러오기 성공하였습니다.\n");
 
     return count;
 }
 
 void input_money(Item *item, int count) // 현금을 자판기에 투입하는 함수
 {
-
+// 구조체를 쓸 것인지 다른 물건 구입 코드를 보고 비교 후 결정 
 }
 
 void buy_item(Item *item, int count) // 물건을 구매하는 함수
 {
-
+//돈이 얼마있는지 보여준 후 //check_money(Item *item, int count) // 투입된 금액을 확인하는 함수
+//메뉴판을 보여주고        // print_list 함수 사용
+//고객이 물품의 이름과 수량을 결정  // 함수 사용 X 그냥 이름과 수량 입력 하기
+//포인트 적립 유무 후 Buy         //구조체 멤버에 있음  char is_pointsave; 포인트 적립 유무
+//총 구입할 물품의 가격 보여주기
+//남은 돈 보여주기 (거스름돈) //exchange_money(Item *item, int count) // 거스름돈 함수
 }
 
 void math_reward(Item *item, int count) // 포인트 계산 함수
 {
-
+// 구입한 금액의 5%정도를 적립하는 것으로 결정
 }
 
 void check_money(Item *item, int count) // 투입된 금액을 확인하는 함수
