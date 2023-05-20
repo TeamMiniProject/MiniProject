@@ -6,6 +6,7 @@
 int main()
 {
     Item item[100];
+    Cash cash;
     char name[100];
     int menuNumber;
     int count = 0;
@@ -47,16 +48,16 @@ int main()
             save_file(item, count, name); // 나중에 파일 네임 함수 바꾸기
             break;
         case 6:
-            input_money(item, count); // 돈 투입 
+            input_money(cash); // 돈 투입 
             break;
         case 7:
-            buy_item(item, count); // 물건 구입과 동시에 reward point 정립하기 
+            buy_item(item, cash, count); // 물건 구입과 동시에 reward point 정립하기 
             break;
         case 8:
-            check_money(item, count); //투입금액 확인
+            check_money(cash); //투입금액 확인
             break;
         case 9:
-            check_point(item, count); // 적립된 포인트 확인 
+            check_point(cash); // 적립된 포인트 확인 
             break;
         case 0:
             printf("종료하겠습니다.\n");
