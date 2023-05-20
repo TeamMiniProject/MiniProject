@@ -236,11 +236,11 @@ void buy_item(Item *item, Cash cash, int count) // 물건을 구매하는 함수
                 printf("%s %d개를 구매합니다.\n", item[i].item_Name, quantity);
                 cash.input_cash -= buy_total_price;
 
-                // if (item[i].is_pointsave == 'Y')
-                //     math_reward(item, count);  // 메스 리워드 함수 수정 및 구현하기
+                if (item[i].is_pointsave == 'Y')
+                    math_reward(cash, count);  // 메스 리워드 함수 수정 및 구현하기
 
-                // else 
-                //     printf("포인트 적립을 하지 않습니다.\n");
+                else 
+                    printf("포인트 적립을 하지 않습니다.\n");
 
                 printf("총 구매한 물건의 가격은 %d입니다.\n\n", buy_total_price);
                 printf("구매가 완료되었습니다.\n");
