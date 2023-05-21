@@ -5,61 +5,63 @@ int menu()
 {
     int menuNumber;
     
-    printf("\n***** ?›?•˜?Š” ë©”ë‰´ *****\n");
-    printf("1. ë¬¼ê±´ ì¶”ê??\n");
-    printf("2. ë¬¼ê±´ ì¡°íšŒ\n");
-    printf("3. ?ˆ˜? •\n");
-    printf("4. ë¬¼ê±´ ?‚­? œ\n");
-    printf("5. ?ŒŒ?¼????¥\n");
-    printf("6. ?˜„ê¸? ?ˆ¬?…\n");
-    printf("7. ë¬¼ê±´ êµ¬ì…\n");
-    printf("8. ?ˆ¬?…?œ ê¸ˆì•¡ ?™•?¸\n");
-    printf("9. ë³´ìœ ?•œ ?¬?¸?Š¸ ?”?•¡ ?™•?¸\n");
-    printf("0. ì¢…ë£Œ\n\n");
-    printf("=> ?›?•˜?Š” ë©”ë‰´?Š”? ");
+    printf("\n************ ì›í•˜ëŠ” ë©”ë‰´ ************\n");
+    printf(" \t 1. ë¬¼ê±´ ì¶”ê°€\n");
+    printf(" \t 2. ë¬¼ê±´ ì¡°íšŒ\n");
+    printf(" \t 3. ìˆ˜ì •\n");
+    printf(" \t 4. ë¬¼ê±´ ì‚­ì œ\n");
+    printf(" \t 5. íŒŒì¼ì €ì¥\n");
+    printf(" \t 6. í˜„ê¸ˆ íˆ¬ì…\n");
+    printf(" \t 7. ë¬¼ê±´ êµ¬ì…\n");
+    printf(" \t 8. íˆ¬ì…ëœ ê¸ˆì•¡ í™•ì¸\n");
+    printf(" \t 9. ë³´ìœ í•œ í¬ì¸íŠ¸ ì”ì•¡ í™•ì¸\n");
+    printf(" \t 0. ì¢…ë£Œ");
+    printf(" \n*************************************\n");
+    printf("=> ì›í•˜ëŠ” ë©”ë‰´ëŠ”? ");
     scanf("%d", &menu);
+    printf("\n");
     
-    return  menu;
+    return  menuNumber;
 } // ë©”ë‰´
 
 
-int add_item(Item *item, int count) // ¹°°Ç Ãß°¡ ÇÔ¼ö
+int add_item(Item *item, int count) // ë¬¼ê±´ ì¶”ê°€ í•¨ìˆ˜
 {
-    printf("ë¬¼ê±´?˜ ?´ë¦??");
-    scanf("%s", item[count].item_Name);
+    printf("ë¬¼ê±´ì˜ ì´ë¦„?: ");
+    scanf("%s", &item[count].item_Name);
 
-    printf("?´ ë¬¼ê±´?˜ ê°œë‹¹ ê°?ê²©ì???");
+    printf("ì´ ë¬¼ê±´ì˜ ê°œë‹¹ ê°€ê²©ì€?: ");
     scanf("%d", &item[count].price);
 
-    printf("ÀÌ ¹°°ÇÀÇ ¼ö·®Àº? ");
+    printf("ì´ ë¬¼ê±´ì˜ ìˆ˜ëŸ‰ì€? ");
     scanf("%d", &item[count].item_Count);
 
     count++;
-    printf("\n¹°°ÇÀÌ Ãß°¡µÇ¾ú½À´Ï´Ù.\n");
+    printf("\në¬¼ê±´ì´ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.\n");
 
     return count;
 } 
 
-void print_list(Item *item, int count) // Á¶È¸ÇÔ¼ö
+void print_list(Item *item, int count) // ì¡°íšŒí•¨ìˆ˜
 {
     if (count == 0)
     {
-        printf("µî·ÏµÈ ¹°°ÇÀÌ ¾ø½À´Ï´Ù.");
+        printf("ë“±ë¡ëœ ë¬¼ê±´ì´ ì—†ìŠµë‹ˆë‹¤.");
         return; 
     }
 
-    printf("***** ë¬¼ê±´ ëª©ë¡ *****\n");
+    printf("â˜…---- ë¬¼ê±´ ëª©ë¡ ----â˜…\n");
 
     for (int i = 0; i < count; i++)
     {
-        printf("¹°°Ç ÀÌ¸§: %s\n", item[i].item_Name);
-        printf("¹°°Ç °¡°İ: %d\n", item[i].price);
-        printf("¹°°Ç ¼ö·®: %d\n", item[i].item_Count);
+        printf("ë¬¼ê±´ ì´ë¦„: %s\n", item[i].item_Name);
+        printf("ë¬¼ê±´ ê°€ê²©: %d\n", item[i].price);
+        printf("ë¬¼ê±´ ìˆ˜ëŸ‰: %d\n", item[i].item_Count);
         printf("--------------------\n");
     }
 } 
 
-void updated_item(Item *item, int count) // ¼öÁ¤ ÇÔ¼ö
+void updated_item(Item *item, int count) // ìˆ˜ì • í•¨ìˆ˜
 {
     char name[100];
     char Newname[100];
@@ -67,41 +69,41 @@ void updated_item(Item *item, int count) // ¼öÁ¤ ÇÔ¼ö
 
     if (count == 0)
     {
-        printf("µî·ÏµÈ ¹°°ÇÀÌ ¾ø½À´Ï´Ù.");
+        printf("ë“±ë¡ëœ ë¬¼ê±´ì´ ì—†ìŠµë‹ˆë‹¤.");
         return; 
     }
 
-    printf("?ˆ˜? •?•  ë¬¼ê±´?˜ ?´ë¦?: ");
+    printf("ì‚­ì œí•  ë¬¼ê±´ì˜ ì´ë¦„: ");
     scanf("%s", name);
 
     for (int i = 0; i < count; i++)
     {
         if (strcmp(item[i].item_Name, name) == 0)
         {
-            printf("»õ·Î¿î ÀÌ¸§: ");
+            printf("ìƒˆë¡œìš´ ì´ë¦„: ");
             scanf("%s", Newname);
             
-            strcpy(item[i].item_Name, Newname); // »õ·Î¿î ÀÌ¸§À¸·Î ¼öÁ¤ÇÏ±â
+            strcpy(item[i].item_Name, Newname); // ìƒˆë¡œìš´ ì´ë¦„ìœ¼ë¡œ ìˆ˜ì •í•˜ê¸°
 
-            printf("»õ·Î¿î °¡°İ: ");
+            printf("ìƒˆë¡œìš´ ê°€ê²©: ");
             scanf("%d", &updatedPrice);
 
-            item[i].price = updatedPrice; // »õ·Î¿î °¡°İÀ¸·Î ¼öÁ¤ÇÏ±â
+            item[i].price = updatedPrice; // ìƒˆë¡œìš´ ê°€ê²©ìœ¼ë¡œ ìˆ˜ì •í•˜ê¸°
 
-            printf("ë¬¼ê±´ ? •ë³´ê?? ?ˆ˜? •?˜?—ˆ?Šµ?‹ˆ?‹¤.\n");
+            printf("\në¬¼ê±´ ì •ë³´ê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.\n");
             return;
         }
     }
 
-    printf("?•´?‹¹?•˜?Š” ?´ë¦„ì˜ ë¬¼ê±´?´ ?—†?Šµ?‹ˆ?‹¤.\n");
+    printf("\ní•´ë‹¹í•˜ëŠ” ì´ë¦„ì˜ ë¬¼ê±´ì´ ì—†ìŠµë‹ˆë‹¤.\n");
 
 }
 
-int delete_item(Item *item, int count) // ¹°°Ç »èÁ¦ ÇÔ¼ö
+int delete_item(Item *item, int count) // ë¬¼ê±´ ì‚­ì œ í•¨ìˆ˜
 {
    if (count == 0)
     {
-        printf("?“±ë¡ëœ ë¬¼ê±´?´ ?—†?Šµ?‹ˆ?‹¤.");
+        printf("?ë²‘æ¿¡ì•¸ë§‚ è‡¾ì‡¨êµ”?ì”  ?ë¾¾?ë’¿?ë•²?ë–.");
         return count; 
     }
 
@@ -109,17 +111,17 @@ int delete_item(Item *item, int count) // ¹°°Ç »èÁ¦ ÇÔ¼ö
 
     updated_item(item, count);
 
-    printf("»èÁ¦ÇÒ ¹°°ÇÀÇ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä ");
+    printf("ì‚­ì œí•  ë¬¼ê±´ì˜ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš” ");
 
     while (1)
     {
         for (int i = 0; i < count; i++)
         {
             if (item[i].Number == is_number)
-                is_number = i; // »èÁ¦ÇÒ ¹°°Ç ¹øÈ£ Ã£±â
+                is_number = i; // ì‚­ì œí•  ë¬¼ê±´ ë²ˆí˜¸ ì°¾ê¸°
         }
         if (is_number == 0)
-            printf("¹øÈ£¸¦ Àß ¸ø ÀÔ·ÂÇß½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä. \n");
+            printf("ë²ˆí˜¸ë¥¼ ì˜ ëª» ì…ë ¥í–ˆìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•˜ì„¸ìš”. \n");
 
         else
             break;
@@ -130,40 +132,40 @@ int delete_item(Item *item, int count) // ¹°°Ç »èÁ¦ ÇÔ¼ö
 
     count--;
 
-    printf("ÁöÃâ ³»¿ªÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.\n");
+    printf("ì§€ì¶œ ë‚´ì—­ì´ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.\n");
 
     return count;
 }
 
-void save_file(Item *item, int count, char filename[100]) // ÆÄÀÏ ÀúÀå ÇÔ¼ö
+void save_file(Item *item, int count, char filename[100]) // íŒŒì¼ ì €ì¥ í•¨ìˆ˜
 {
     FILE *file = fopen(filename, "w");
     if (file == NULL)
     {
-        printf("ÆÄÀÏÀ» ¿­ ¼ö ¾ø½À´Ï´Ù.\n");
+        printf("íŒŒì¼ì„ ì—´ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\n");
         return;
     }
 
     for (int i = 0; i < count; i++)
     {
-        fprintf(file, "%d", item[i].Number); // ¹°Ç°ÀÇ ¼ıÀÚ¸¦ ÆÄÀÏ¿¡ ÀúÀå
+        fprintf(file, "%d", item[i].Number); // ë¬¼í’ˆì˜ ìˆ«ìë¥¼ íŒŒì¼ì— ì €ì¥
 
-        fprintf(file, "%s\n", item[i].item_Name); // ¹°Ç°ÀÇ ÀÌ¸§À» ÆÄÀÏ¿¡ ÀúÀå
+        fprintf(file, "%s\n", item[i].item_Name); // ë¬¼í’ˆì˜ ì´ë¦„ì„ íŒŒì¼ì— ì €ì¥
 
-        fprintf(file, "%d ", item[i].price); // ¹°Ç°ÀÇ °¡°İÀ» ÆÄÀÏ¿¡ ÀúÀå
+        fprintf(file, "%d ", item[i].price); // ë¬¼í’ˆì˜ ê°€ê²©ì„ íŒŒì¼ì— ì €ì¥
     }
 
     fclose(file);
 
-    printf("ÆÄÀÏÀÌ ÀúÀåµÇ¾ú½À´Ï´Ù.\n");
+    printf("íŒŒì¼ì´ ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.\n");
 }
 
-int load_file(Item *item, char filename[100]) // ÆÄÀÏ¿¡¼­ ÀĞ¾î¿À´Â ÇÔ¼ö
+int load_file(Item *item, char filename[100]) // íŒŒì¼ì—ì„œ ì½ì–´ì˜¤ëŠ” í•¨ìˆ˜
 {
     FILE *file = fopen(filename, "r");
     if (file == NULL)
     {
-        printf(" ?ŒŒ?¼?´ ì¡´ì¬?•˜ì§? ?•Š?Šµ?‹ˆ?‹¤. ?„?‹œë¡? ?•˜?‚˜ë¥? ë§Œë“¤ê² ìŠµ?‹ˆ?‹¤.\n");
+        printf("[ê²½ê³ ] íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ì„ì‹œë¡œ í•˜ë‚˜ë¥¼ ë§Œë“¤ê² ìŠµë‹ˆë‹¤.\n");
         return 0;
     }
 
@@ -186,21 +188,21 @@ int load_file(Item *item, char filename[100]) // ÆÄÀÏ¿¡¼­ ÀĞ¾î¿À´Â ÇÔ¼ö
 
     fclose(file);
 
-    printf("ÆÄÀÏ ºÒ·¯¿À±â ¼º°øÇÏ¿´½À´Ï´Ù.\n");
+    printf("íŒŒì¼ ë¶ˆëŸ¬ì˜¤ê¸° ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤.\n");
 
     return count;
 }
 
-void input_money(Cash cash) // Çö±İÀ» ÀÚÆÇ±â¿¡ ÅõÀÔÇÏ´Â ÇÔ¼ö
+void input_money(Cash cash) // í˜„ê¸ˆì„ ìíŒê¸°ì— íˆ¬ì…í•˜ëŠ” í•¨ìˆ˜
 {
-    printf("ÀÚÆÇ±â¿¡ ÅõÀÔÇÒ Çö±İ ±İ¾×Àº ¾ó¸¶ÀÔ´Ï±î? ");
+    printf("ìíŒê¸°ì— íˆ¬ì…í•  í˜„ê¸ˆ ê¸ˆì•¡ì€ ì–¼ë§ˆì…ë‹ˆê¹Œ? ");
     scanf("%d", &cash.input_cash);
 }
 
-void buy_item(Item *item, Cash cash, int count) // ¹°°ÇÀ» ±¸¸ÅÇÏ´Â ÇÔ¼ö
+void buy_item(Item *item, Cash cash, int count) // ë¬¼ê±´ì„ êµ¬ë§¤í•˜ëŠ” í•¨ìˆ˜
 {
     if (count == 0) {
-        printf("µî·ÏµÈ ¹°°ÇÀÌ ¾ø½À´Ï´Ù.\n");
+        printf("ë“±ë¡ëœ ë¬¼ê±´ì´ ì—†ìŠµë‹ˆë‹¤.\n");
         return;
     }
 
@@ -212,13 +214,13 @@ void buy_item(Item *item, Cash cash, int count) // ¹°°ÇÀ» ±¸¸ÅÇÏ´Â ÇÔ¼ö
     int quantity;
     char point_check;
 
-    printf("±¸¸ÅÇÒ ¹°°ÇÀÇ ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä: ");
+    printf("êµ¬ë§¤í•  ë¬¼ê±´ì˜ ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”: ");
     scanf("%s", buyitem_name);
 
-    printf("±¸¸ÅÇÒ ¹°°ÇÀÇ ¼ö·®À» ÀÔ·ÂÇÏ¼¼¿ä: ");
+    printf("êµ¬ë§¤í•  ë¬¼ê±´ì˜ ìˆ˜ëŸ‰ì„ ì…ë ¥í•˜ì„¸ìš”: ");
     scanf("%d", &quantity);
 
-    printf("Æ÷ÀÎÆ® Àû¸³À» ÇÏ½Ã°Ú½À´Ï±î? ");
+    printf("í¬ì¸íŠ¸ ì ë¦½ì„ í•˜ì‹œê² ìŠµë‹ˆê¹Œ? ");
     scanf("%s", point_check);
 
     int buy_total_price = 0;
@@ -234,27 +236,24 @@ void buy_item(Item *item, Cash cash, int count) // ¹°°ÇÀ» ±¸¸ÅÇÏ´Â ÇÔ¼ö
 
             if (cash.input_cash >= buy_total_price) 
             {
-                printf("%s %d°³¸¦ ±¸¸ÅÇÕ´Ï´Ù.\n", item[i].item_Name, quantity);
+                printf("%s %dê°œë¥¼ êµ¬ë§¤í•©ë‹ˆë‹¤.\n", item[i].item_Name, quantity);
                 cash.input_cash -= buy_total_price;
 
-                if (strcmp(item[i].is_pointsave, "Y") == 0)
-                {
-                    printf("?¬?¸?Š¸ ? ë¦½í•©?‹ˆ?‹¤.\n");
-                    math_reward(cash, count);  // ë©”ìŠ¤ ë¦¬ì›Œ?“œ ?•¨?ˆ˜ ?ˆ˜? • ë°? êµ¬í˜„?•˜ê¸?
-                }
+                if (item[i].is_pointsave, "Y")
+                    math_reward(cash, count);  // ï§ë¶¿ë’ª ç”±ÑŠì™?ë±¶ ?ë¸¿?ë‹” ?ë‹”?ì ™ è«›? æ´Ñ‹ì½?ë¸¯æ¹²?
 
                 else 
-                    printf("Æ÷ÀÎÆ® Àû¸³À» ÇÏÁö ¾Ê½À´Ï´Ù.\n");
+                    printf("í¬ì¸íŠ¸ ì ë¦½ì„ í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\n");
 
-                printf("ÃÑ ±¸¸ÅÇÑ ¹°°ÇÀÇ °¡°İÀº %dÀÔ´Ï´Ù.\n\n", buy_total_price);
-                printf("±¸¸Å°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.\n");
+                printf("ì´ êµ¬ë§¤í•œ ë¬¼ê±´ì˜ ê°€ê²©ì€ %dì…ë‹ˆë‹¤.\n\n", buy_total_price);
+                printf("êµ¬ë§¤ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.\n");
                 found = 1;
                 break;
             } 
             
             else 
             {
-                printf("±İ¾×ÀÌ ºÎÁ·ÇÏ¿© ±¸¸ÅÇÒ ¼ö ¾ø½À´Ï´Ù.\n");
+                printf("ê¸ˆì•¡ì´ ë¶€ì¡±í•˜ì—¬ êµ¬ë§¤í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\n");
                 break;
             }
         }
@@ -262,30 +261,30 @@ void buy_item(Item *item, Cash cash, int count) // ¹°°ÇÀ» ±¸¸ÅÇÏ´Â ÇÔ¼ö
 
     if (!found) 
     {
-        printf("ÇØ´çÇÏ´Â ÀÌ¸§ÀÇ ¹°°ÇÀÌ ¾ø½À´Ï´Ù.\n");
+        printf("í•´ë‹¹í•˜ëŠ” ì´ë¦„ì˜ ë¬¼ê±´ì´ ì—†ìŠµë‹ˆë‹¤.\n");
     }
 
-    printf("ÇöÀç ÀÚÆÇ±â¿¡ ÅõÀÔµÈ ³²Àº ±İ¾× : %d\n", cash.input_cash);
+    printf("í˜„ì¬ ìíŒê¸°ì— íˆ¬ì…ëœ ë‚¨ì€ ê¸ˆì•¡ : %d\n", cash.input_cash);
 
-//µ·ÀÌ ¾ó¸¶ÀÖ´ÂÁö º¸¿©ÁØ ÈÄ //check_money(Item *item, int count) // ÅõÀÔµÈ ±İ¾×À» È®ÀÎÇÏ´Â ÇÔ¼ö
-//¸Ş´ºÆÇÀ» º¸¿©ÁÖ°í        // print_list ÇÔ¼ö »ç¿ë
-//°í°´ÀÌ ¹°Ç°ÀÇ ÀÌ¸§°ú ¼ö·®À» °áÁ¤  // ÇÔ¼ö »ç¿ë X ±×³É ÀÌ¸§°ú ¼ö·® ÀÔ·Â ÇÏ±â
-//Æ÷ÀÎÆ® Àû¸³ À¯¹« ÈÄ Buy         //±¸Á¶Ã¼ ¸â¹ö¿¡ ÀÖÀ½  char is_pointsave; Æ÷ÀÎÆ® Àû¸³ À¯¹«
-//ÃÑ ±¸ÀÔÇÒ ¹°Ç°ÀÇ °¡°İ º¸¿©ÁÖ±â
-//³²Àº µ· º¸¿©ÁÖ±â (°Å½º¸§µ·) //exchange_money(Item *item, int count) // °Å½º¸§µ· ÇÔ¼ö
+//ëˆì´ ì–¼ë§ˆìˆëŠ”ì§€ ë³´ì—¬ì¤€ í›„ //check_money(Item *item, int count) // íˆ¬ì…ëœ ê¸ˆì•¡ì„ í™•ì¸í•˜ëŠ” í•¨ìˆ˜
+//ë©”ë‰´íŒì„ ë³´ì—¬ì£¼ê³         // print_list í•¨ìˆ˜ ì‚¬ìš©
+//ê³ ê°ì´ ë¬¼í’ˆì˜ ì´ë¦„ê³¼ ìˆ˜ëŸ‰ì„ ê²°ì •  // í•¨ìˆ˜ ì‚¬ìš© X ê·¸ëƒ¥ ì´ë¦„ê³¼ ìˆ˜ëŸ‰ ì…ë ¥ í•˜ê¸°
+//í¬ì¸íŠ¸ ì ë¦½ ìœ ë¬´ í›„ Buy         //êµ¬ì¡°ì²´ ë©¤ë²„ì— ìˆìŒ  char is_pointsave; í¬ì¸íŠ¸ ì ë¦½ ìœ ë¬´
+//ì´ êµ¬ì…í•  ë¬¼í’ˆì˜ ê°€ê²© ë³´ì—¬ì£¼ê¸°
+//ë‚¨ì€ ëˆ ë³´ì—¬ì£¼ê¸° (ê±°ìŠ¤ë¦„ëˆ) //exchange_money(Item *item, int count) // ê±°ìŠ¤ë¦„ëˆ í•¨ìˆ˜
 }
 
-void math_reward(Cash cash ,int buy_money) // Æ÷ÀÎÆ® °è»ê ÇÔ¼ö ->> ±¸ÀÔÇÑ ±İ¾×ÀÇ 5%Á¤µµ¸¦ Àû¸³ÇÏ´Â °ÍÀ¸·Î °áÁ¤
+void math_reward(Cash cash ,int buy_money) // í¬ì¸íŠ¸ ê³„ì‚° í•¨ìˆ˜ ->> êµ¬ì…í•œ ê¸ˆì•¡ì˜ 5%ì •ë„ë¥¼ ì ë¦½í•˜ëŠ” ê²ƒìœ¼ë¡œ ê²°ì •
 {
     cash.reward_point = buy_money * 0.03;
 }
 
-void check_money(Cash cash) // ÅõÀÔµÈ ±İ¾×À» È®ÀÎÇÏ´Â ÇÔ¼ö
+void check_money(Cash cash) // íˆ¬ì…ëœ ê¸ˆì•¡ì„ í™•ì¸í•˜ëŠ” í•¨ìˆ˜
 {
-    printf("ÇöÀç ÀÚÆÇ±â¿¡ ÅõÀÔµÈ ±İ¾× : %d\n", cash.input_cash);
+    printf("í˜„ì¬ ìíŒê¸°ì— íˆ¬ì…ëœ ê¸ˆì•¡ : %d\n", cash.input_cash);
 }
 
-void check_point(Cash cash) // ÇöÀç º¸À¯ÇÑ Æ÷ÀÎÆ® ÀÜ¾× È®ÀÎ ±â´É
+void check_point(Cash cash) // í˜„ì¬ ë³´ìœ í•œ í¬ì¸íŠ¸ ì”ì•¡ í™•ì¸ ê¸°ëŠ¥
 {
-    printf("ÇöÀç±îÁö Àû¸³µÈ Æ÷ÀÎÆ® ±İ¾× : %d\n", cash.reward_point);
+    printf("í˜„ì¬ê¹Œì§€ ì ë¦½ëœ í¬ì¸íŠ¸ ê¸ˆì•¡ : %d\n", cash.reward_point);
 }
