@@ -25,7 +25,7 @@ int main()
     printf("=> 원하는 메뉴는? ");
     scanf("%d", &menu);
 
-    count = load_File(item, name);
+    count = load_file(item, name);
 
     while (1)
     {
