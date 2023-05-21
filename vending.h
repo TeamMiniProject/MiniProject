@@ -13,19 +13,19 @@ typedef struct
 
 typedef struct
 {
-    int input_cash;
-    int reward_point;
+    int input_cash; //??Œê¸°ì— ?“¤?–´ê°? ?˜„ê¸?
+    int reward_point; // ë¬¼ê±´?„ ?‚¬ê³? ? ë¦½í•œ ?¬?¸?Š¸
 } Cash;
 
 int menu(); // ¸Ş´º
 
 int add_item(Item *item, int count); // ¹°°Ç Ãß°¡ ÇÔ¼ö
 
-void print_list(Item *item, int count); // Á¶È¸ ÇÔ¼ö
+void print_list(Item *item, int count); // ì¡°íšŒ ?•¨?ˆ˜
 
-void updated_item(Item *item, int count); // ¼öÁ¤ ÇÔ¼ö
+void updated_item(Item *item, int count); // ?ˆ˜? • ?•¨?ˆ˜
 
-int delete_item(Item *item, int count); // ¹°°Ç »èÁ¦ ÇÔ¼ö
+int delete_item(Item *item, int count); // ë¬¼ê±´ ?‚­? œ ?•¨?ˆ˜
 
 void save_file(Item *item, int count, char filename[100]); // ÆÄÀÏ ÀúÀå ÇÔ¼ö
 
@@ -33,10 +33,10 @@ int load_file(Item *item, int count, char filename[100]); // ÆÄÀÏ¿¡¼­ ÀĞ¾î¿À´Â Ç
 
 void input_money(Cash *cash); // Çö±İÀ» ÀÚÆÇ±â¿¡ ÅõÀÔÇÏ´Â ÇÔ¼ö
 
-void buy_item(Item *item, Cash *cash, int count); // ¹°°ÇÀ» ±¸¸ÅÇÏ´Â ÇÔ¼ö
+void buy_item(Item *item, Cash *cash, int count); // ë¬¼ê±´?„ êµ¬ë§¤?•˜?Š” ?•¨?ˆ˜
 
 void math_reward(Cash *cash ,int buy_money); // Æ÷ÀÎÆ® °è»ê ÇÔ¼ö
 
-void check_money(Cash *cash); // ÅõÀÔµÈ ±İ¾×À» È®ÀÎÇÏ´Â ÇÔ¼ö
+void check_money(Cash *cash); // ?ˆ¬?…?œ ê¸ˆì•¡?„ ?™•?¸?•˜?Š” ?•¨?ˆ˜
 
 void check_point(Cash *cash); // ÇöÀç º¸À¯ÇÑ Æ÷ÀÎÆ® ÀÜ¾× È®ÀÎ ±â´É
