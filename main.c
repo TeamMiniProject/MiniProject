@@ -4,12 +4,14 @@ int main()
 {
     Item item[100];
     Cash cash;
-    char name[100];
+    char filename[100];
     int menuNumber;
     int count = 0;
 
+    printf("파일 명을 입력하세요 : ");
+    scanf("%s", filename);
 
-    count = load_file(item, name);
+    count = load_file(item, count, filename);
 
     while (1)
     {
@@ -34,7 +36,7 @@ int main()
             break;
 
         case 5:
-            save_file(item, count, name); // 나중에 파일 네임 함수 바꾸기
+            save_file(item, count, filename); // 나중에 파일 네임 함수 바꾸기
             break;
 
         case 6:

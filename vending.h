@@ -29,7 +29,7 @@ int delete_item(Item *item, int count); // 물건 삭제 함수
 
 void save_file(Item *item, int count, char filename[100]); // 파일 저장 함수
 
-int load_file(Item *item, char filename[100]); // 파일에서 읽어오는 함수
+int load_file(Item *item, int count, char filename[100]); // 파일에서 읽어오는 함수
 
 void input_money(Cash *cash); // 현금을 자판기에 투입하는 함수
 
