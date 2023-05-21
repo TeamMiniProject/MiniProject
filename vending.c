@@ -27,6 +27,8 @@ int menu()
 
 int add_item(Item *item, int count) // 물건 추가 함수
 {
+    int number = 0;
+
     printf("물건의 이름?: ");
     scanf("%s", &item[count].item_Name);
 
@@ -36,7 +38,12 @@ int add_item(Item *item, int count) // 물건 추가 함수
     printf("이 물건의 수량은? ");
     scanf("%d", &item[count].item_Count);
 
+    item[0].Number = 1;
+
     count++;
+    number = count;
+    item[count].Number = number + 1;
+
     printf("\n물건이 추가되었습니다.\n");
 
     return count;
@@ -54,6 +61,7 @@ void print_list(Item *item, int count) // 조회함수
 
     for (int i = 0; i < count; i++)
     {
+        printf("물건의 번호: %d\n", item[i].Number);
         printf("물건 이름: %s\n", item[i].item_Name);
         printf("물건 가격: %d\n", item[i].price);
         printf("물건 수량: %d\n", item[i].item_Count);
@@ -112,31 +120,42 @@ int delete_item(Item *item, int count) // 물건 삭제 함수
         return count; 
     }
 
-    int is_number;
+    char name[100];
+    int delete_number = -1;
 
-    printf("삭제할 물건의 번호를 입력하세요 ");
-
-    while (1)
+    printf("삭제할 물건의 이름: ");
+    scanf("%s", name);
+    
+    while(1)
     {
         for (int i = 0; i < count; i++)
         {
-            if (item[i].Number == is_number)
-                is_number = i; // 삭제할 물건 번호 찾기
+            if (strcmp(item[i].item_Name, name) == 0)
+            {
+                delete_number = i;
+                break;
+            }
         }
-        if (is_number == 0)
-            printf("번호를 잘 못 입력했습니다. 다시 입력하세요. \n");
+
+        if (delete_number == -1)
+        {
+            printf("\n해당하는 이름의 물건이 없습니다.\n");
+            break;
+        }
 
         else
+        {
+            for (int i = delete_number; i < count - 1; i++)
+            {
+                item[i] = item[i + 1];
+                item[i].Number = i + 1; // Update the item number
+            }
+
+            count--;
+            printf("해당 물건이 삭제되었습니다.\n");
             break;
+        }
     }
-
-    for (int i = is_number; i < count - 1; i++)
-        item[i] = item[i + 1]; 
-
-    count--;
-
-    printf("지출 내역이 삭제되었습니다.\n");
-
     return count;
 }
 
