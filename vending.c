@@ -1,7 +1,6 @@
-
 #include "vending.h"
 
-int menu()
+int menu() // 메뉴
 {
     int menuNumber;
     
@@ -22,7 +21,7 @@ int menu()
     printf("\n");
     
     return  menuNumber;
-} // 메뉴
+} 
 
 
 int add_item(Item *item, int count) // 물건 추가 함수
@@ -45,7 +44,7 @@ int add_item(Item *item, int count) // 물건 추가 함수
     return count+1;
 } 
 
-void print_list(Item *item, int count) // 조회함수
+void print_list(Item *item, int count) // 등록된 물건 내역 조회함수
 {
     if (count == 0)
     {
@@ -65,7 +64,7 @@ void print_list(Item *item, int count) // 조회함수
     }
 } 
 
-void updated_item(Item *item, int count) // 수정 함수
+void updated_item(Item *item, int count) // 물건 이름, 가격 및 수량 수정 함수
 {
     char name[100];
     char Newname[100];
@@ -144,7 +143,7 @@ int delete_item(Item *item, int count) // 물건 삭제 함수
             for (int i = delete_number; i < count - 1; i++)
             {
                 item[i] = item[i + 1];
-                item[i].Number = i + 1; // Update the item number
+                item[i].Number = i + 1; // 새로운 물건 번호 수정해주기 (삭제하면 물건 번호가 달라짐)
             }
 
             count--;
@@ -173,7 +172,7 @@ void save_file(Item *item, int count, char filename[100]) // 파일 저장 함수
 
         fprintf(file, "%d ", item[i].price); // 물품의 가격을 파일에 저장
 
-        fprintf(file, "%d ", item[i].item_Count); // 물품의 가격을 파일에 저장
+        fprintf(file, "%d ", item[i].item_Count); // 물품의 수량을 파일에 저장
     }
 
     fclose(file);
@@ -189,7 +188,6 @@ int load_file(Item *item, int count, char filename[100]) // 파일에서 읽어오는 함
         printf("[경고] 파일이 존재하지 않습니다.\n");
         return 0;
     }
-
 
     for (int i = 0; i < 100; i++)
     {
@@ -262,6 +260,7 @@ void buy_item(Item *item, Cash *cash, int count) // 물건을 구매하는 함수
             {
                 printf("%s %d개를 구매합니다.\n\n", item[i].item_Name, quantity);
                 cash->input_cash -= buy_total_price;
+                item[i].item_Count -= quantity;
 
                 if (strcmp(item[i].is_pointsave, "Y") == 0)
                     math_reward(cash, buy_total_price);  
@@ -297,12 +296,12 @@ void math_reward(Cash *cash ,int buy_money) // 포인트 계산 함수 ->> 구입한 금액�
     cash->reward_point += buy_money * 0.03;
 }
 
-void check_money(Cash *cash) // 투입된 금액을 확인하는 함수
+void check_money(Cash *cash) // 자판기에 투입된 금액을 확인하는 함수
 {
     printf("현재 자판기에 투입된 금액 : %d\n", cash->input_cash);
 }
 
-void check_point(Cash *cash) // 현재 보유한 포인트 잔액 확인 기능
+void check_point(Cash *cash) // 현재 물건을 구매하며 보유한 포인트 잔액 확인 기능
 {
     printf("현재까지 적립된 포인트 금액 : %d\n", cash->reward_point);
 }
