@@ -1,39 +1,38 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+
 #include "vending.h"
 
 int menu()
 {
-    int menu;
+    int menuNumber;
     
-    printf("\n************ 원하는 메뉴 ************\n");
-    printf(" \t 1. 물건 추가\n");
-    printf(" \t 2. 물건 조회\n");
-    printf(" \t 3. 수정\n");
-    printf(" \t 4. 물건 삭제\n");
-    printf(" \t 5. 파일저장\n");
-    printf(" \t 6. 현금 투입\n");
-    printf(" \t 7. 물건 구입\n");
-    printf(" \t 8. 투입된 금액 확인\n");
-    printf(" \t 9. 보유한 포인트 잔액 확인\n");
-    printf(" \t 0. 종료");
-    printf(" \n*************************************\n");
-    printf("=> 원하는 메뉴는? ");
+    printf("\n***** ?썝?븯?뒗 硫붾돱 *****\n");
+    printf("1. 臾쇨굔 異붽??\n");
+    printf("2. 臾쇨굔 議고쉶\n");
+    printf("3. ?닔?젙\n");
+    printf("4. 臾쇨굔 ?궘?젣\n");
+    printf("5. ?뙆?씪????옣\n");
+    printf("6. ?쁽湲? ?닾?엯\n");
+    printf("7. 臾쇨굔 援ъ엯\n");
+    printf("8. ?닾?엯?맂 湲덉븸 ?솗?씤\n");
+    printf("9. 蹂댁쑀?븳 ?룷?씤?듃 ?옍?븸 ?솗?씤\n");
+    printf("0. 醫낅즺\n\n");
+    printf("=> ?썝?븯?뒗 硫붾돱?뒗? ");
     scanf("%d", &menu);
-    printf("\n");
     
     return  menu;
-} // 메뉴
+} // 硫붾돱
 
 
 int add_item(Item *item, int count) // 물건 추가 함수
 {
-    printf("물건의 이름?: ");
-    scanf("%s", &item[count].item_Name);
+    printf("臾쇨굔?쓽 ?씠由??");
+    scanf("%s", item[count].item_Name);
 
-    printf("이 물건의 개당 가격은?: ");
+    printf("?씠 臾쇨굔?쓽 媛쒕떦 媛?寃⑹???");
     scanf("%d", &item[count].price);
+
+    printf("이 물건의 수량은? ");
+    scanf("%d", &item[count].item_Count);
 
     count++;
     printf("\n물건이 추가되었습니다.\n");
@@ -49,7 +48,7 @@ void print_list(Item *item, int count) // 조회함수
         return; 
     }
 
-    printf("★---- 물건 목록 ----★\n");
+    printf("***** 臾쇨굔 紐⑸줉 *****\n");
 
     for (int i = 0; i < count; i++)
     {
@@ -72,7 +71,7 @@ void updated_item(Item *item, int count) // 수정 함수
         return; 
     }
 
-    printf("삭제할 물건의 이름: ");
+    printf("?닔?젙?븷 臾쇨굔?쓽 ?씠由?: ");
     scanf("%s", name);
 
     for (int i = 0; i < count; i++)
@@ -89,12 +88,12 @@ void updated_item(Item *item, int count) // 수정 함수
 
             item[i].price = updatedPrice; // 새로운 가격으로 수정하기
 
-            printf("\n물건 정보가 수정되었습니다.\n");
+            printf("臾쇨굔 ?젙蹂닿?? ?닔?젙?릺?뿀?뒿?땲?떎.\n");
             return;
         }
     }
 
-    printf("\n해당하는 이름의 물건이 없습니다.\n");
+    printf("?빐?떦?븯?뒗 ?씠由꾩쓽 臾쇨굔?씠 ?뾾?뒿?땲?떎.\n");
 
 }
 
@@ -103,7 +102,7 @@ int delete_item(Item *item, int count) // 물건 삭제 함수
    if (count == 0)
     {
         printf("?벑濡앸맂 臾쇨굔?씠 ?뾾?뒿?땲?떎.");
-        return; 
+        return count; 
     }
 
     int is_number;
@@ -164,7 +163,7 @@ int load_file(Item *item, char filename[100]) // 파일에서 읽어오는 함수
     FILE *file = fopen(filename, "r");
     if (file == NULL)
     {
-        printf("[경고] 파일이 존재하지 않습니다. 임시로 하나를 만들겠습니다.\n");
+        printf(" ?뙆?씪?씠 議댁옱?븯吏? ?븡?뒿?땲?떎. ?엫?떆濡? ?븯?굹瑜? 留뚮뱾寃좎뒿?땲?떎.\n");
         return 0;
     }
 
@@ -238,8 +237,11 @@ void buy_item(Item *item, Cash cash, int count) // 물건을 구매하는 함수
                 printf("%s %d개를 구매합니다.\n", item[i].item_Name, quantity);
                 cash.input_cash -= buy_total_price;
 
-                if (item[i].is_pointsave == 'Y')
+                if (strcmp(item[i].is_pointsave, "Y") == 0)
+                {
+                    printf("?룷?씤?듃 ?쟻由쏀빀?땲?떎.\n");
                     math_reward(cash, count);  // 硫붿뒪 由ъ썙?뱶 ?븿?닔 ?닔?젙 諛? 援ы쁽?븯湲?
+                }
 
                 else 
                     printf("포인트 적립을 하지 않습니다.\n");
