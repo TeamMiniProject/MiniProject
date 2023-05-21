@@ -38,15 +38,11 @@ int add_item(Item *item, int count) // 물건 추가 함수
     printf("이 물건의 수량은? ");
     scanf("%d", &item[count].item_Count);
 
-    item[0].Number = 1;
-
-    count++;
-    number = count;
-    item[count].Number = number + 1;
+    item[count].Number = count + 1; // 물건 번호 업데이트
 
     printf("\n물건이 추가되었습니다.\n");
 
-    return count;
+    return count+1;
 } 
 
 void print_list(Item *item, int count) // 조회함수
@@ -162,9 +158,10 @@ int delete_item(Item *item, int count) // 물건 삭제 함수
 void save_file(Item *item, int count, char filename[100]) // 파일 저장 함수
 {
     FILE *file = fopen(filename, "w");
+
     if (file == NULL)
     {
-        printf("파일을 열 수 없습니다.\n");
+        printf("파일이 없습니다.\n");
         return;
     }
 
@@ -175,35 +172,37 @@ void save_file(Item *item, int count, char filename[100]) // 파일 저장 함수
         fprintf(file, "%s\n", item[i].item_Name); // 물품의 이름을 파일에 저장
 
         fprintf(file, "%d ", item[i].price); // 물품의 가격을 파일에 저장
+
+        fprintf(file, "%d ", item[i].item_Count); // 물품의 가격을 파일에 저장
     }
 
     fclose(file);
 
-    printf("파일이 저장되었습니다.\n");
+    printf("파일 저장 완료. \n");
 }
 
-int load_file(Item *item, char filename[100]) // 파일에서 읽어오는 함수
+int load_file(Item *item, int count, char filename[100]) // 파일에서 읽어오는 함수
 {
     FILE *file = fopen(filename, "r");
     if (file == NULL)
     {
-        printf("[경고] 파일이 존재하지 않습니다. 임시로 하나를 만들겠습니다.\n");
+        printf("[경고] 파일이 존재하지 않습니다.\n");
         return 0;
     }
 
-    int count = -1;
-    int a = 0;
 
     for (int i = 0; i < 100; i++)
     {
         if (feof(file))
             break;
 
-        fscanf(file, "%d", &item[i].Number); // 
+        fscanf(file, "%d", &item[i].Number);
 
         fscanf(file, " %s", item[i].item_Name); 
 
         fscanf(file, "%d", &item[i].price);
+
+        fscanf(file, "%d ", &item[i].item_Count);
 
         count++;
     }
