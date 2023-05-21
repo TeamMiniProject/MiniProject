@@ -4,11 +4,11 @@
 
 typedef struct
 {   
-    int Number; // ë¬¼í’ˆì˜ ë²ˆí˜¸
-    char item_Name[100]; //ë¬¼í’ˆì˜ ì´ë¦„
-    int item_Count; //ë¬¼í’ˆì˜ ìˆ˜ëŸ‰
-    int price;  // ê°œë‹¹ ê°€ê²© 
-    char is_pointsave[2]; //í¬ì¸íŠ¸ ì ë¦½ ìœ ë¬´
+    int Number; // ¹°Ç°ÀÇ ¹øÈ£
+    char item_Name[100]; //¹°Ç°ÀÇ ÀÌ¸§
+    int item_Count; //¹°Ç°ÀÇ ¼ö·®
+    int price;  // °³´ç °¡°İ 
+    char is_pointsave[2]; //Æ÷ÀÎÆ® Àû¸³ À¯¹«
 } Item;
 
 typedef struct
@@ -17,26 +17,26 @@ typedef struct
     int reward_point;
 } Cash;
 
-int menu(); // ë©”ë‰´
+int menu(); // ¸Ş´º
 
-int add_item(Item *item, int count); // ë¬¼ê±´ ì¶”ê°€ í•¨ìˆ˜
+int add_item(Item *item, int count); // ¹°°Ç Ãß°¡ ÇÔ¼ö
 
-void print_list(Item *item, int count); // ì¡°íšŒ í•¨ìˆ˜
+void print_list(Item *item, int count); // Á¶È¸ ÇÔ¼ö
 
-void updated_item(Item *item, int count); // ìˆ˜ì • í•¨ìˆ˜
+void updated_item(Item *item, int count); // ¼öÁ¤ ÇÔ¼ö
 
-int delete_item(Item *item, int count); // ë¬¼ê±´ ì‚­ì œ í•¨ìˆ˜
+int delete_item(Item *item, int count); // ¹°°Ç »èÁ¦ ÇÔ¼ö
 
-void save_file(Item *item, int count, char filename[100]); // íŒŒì¼ ì €ì¥ í•¨ìˆ˜
+void save_file(Item *item, int count, char filename[100]); // ÆÄÀÏ ÀúÀå ÇÔ¼ö
 
-int load_file(Item *item, int count, char filename[100]); // íŒŒì¼ì—ì„œ ì½ì–´ì˜¤ëŠ” í•¨ìˆ˜
+int load_file(Item *item, int count, char filename[100]); // ÆÄÀÏ¿¡¼­ ÀĞ¾î¿À´Â ÇÔ¼ö
 
-void input_money(Cash *cash); // í˜„ê¸ˆì„ ìíŒê¸°ì— íˆ¬ì…í•˜ëŠ” í•¨ìˆ˜
+void input_money(Cash *cash); // Çö±İÀ» ÀÚÆÇ±â¿¡ ÅõÀÔÇÏ´Â ÇÔ¼ö
 
-void buy_item(Item *item, Cash *cash, int count); // ë¬¼ê±´ì„ êµ¬ë§¤í•˜ëŠ” í•¨ìˆ˜
+void buy_item(Item *item, Cash *cash, int count); // ¹°°ÇÀ» ±¸¸ÅÇÏ´Â ÇÔ¼ö
 
-void math_reward(Cash *cash ,int buy_money); // í¬ì¸íŠ¸ ê³„ì‚° í•¨ìˆ˜
+void math_reward(Cash *cash ,int buy_money); // Æ÷ÀÎÆ® °è»ê ÇÔ¼ö
 
-void check_money(Cash *cash); // íˆ¬ì…ëœ ê¸ˆì•¡ì„ í™•ì¸í•˜ëŠ” í•¨ìˆ˜
+void check_money(Cash *cash); // ÅõÀÔµÈ ±İ¾×À» È®ÀÎÇÏ´Â ÇÔ¼ö
 
-void check_point(Cash *cash); // í˜„ì¬ ë³´ìœ í•œ í¬ì¸íŠ¸ ì”ì•¡ í™•ì¸ ê¸°ëŠ¥
+void check_point(Cash *cash); // ÇöÀç º¸À¯ÇÑ Æ÷ÀÎÆ® ÀÜ¾× È®ÀÎ ±â´É
