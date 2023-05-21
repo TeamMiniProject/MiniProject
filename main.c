@@ -38,7 +38,7 @@ int main()
             break;
 
         case 6:
-            input_money(cash); // 돈 투입 
+            input_money(&cash); // 돈 투입 
             break;
 
         case 7:
@@ -46,7 +46,7 @@ int main()
             break;
 
         case 8:
-            check_money(cash); //투입금액 확인
+            check_money(&cash); //투입금액 확인
             break;
 
         case 9:
