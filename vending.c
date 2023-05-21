@@ -243,8 +243,9 @@ void buy_item(Item *item, Cash *cash, int count) // 물건을 구매하는 함수
     printf("구매할 물건의 수량을 입력하세요: ");
     scanf("%d", &quantity);
 
-    printf("포인트 적립을 하시겠습니까?(Y/N): ");
-    scanf("%ls", point_check);
+    printf("포인트 적립을 하시겠습니까? (Y/N) : ");
+    scanf("%1s", point_check);
+    printf("\n");
 
     int buy_total_price = 0;
     int found = 0;
