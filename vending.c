@@ -102,8 +102,8 @@ int delete_item(Item *item, int count) // 물건 삭제 함수
 {
    if (count == 0)
     {
-        printf("등록된 물건이 없습니다.");
-        return count; 
+        printf("?벑濡앸맂 臾쇨굔?씠 ?뾾?뒿?땲?떎.");
+        return; 
     }
 
     int is_number;
@@ -238,8 +238,8 @@ void buy_item(Item *item, Cash cash, int count) // 물건을 구매하는 함수
                 printf("%s %d개를 구매합니다.\n", item[i].item_Name, quantity);
                 cash.input_cash -= buy_total_price;
 
-                if (item[i].is_pointsave,"Y")
-                    math_reward(cash, count);  // 메스 리워드 함수 수정 및 구현하기
+                if (item[i].is_pointsave == 'Y')
+                    math_reward(cash, count);  // 硫붿뒪 由ъ썙?뱶 ?븿?닔 ?닔?젙 諛? 援ы쁽?븯湲?
 
                 else 
                     printf("포인트 적립을 하지 않습니다.\n");
