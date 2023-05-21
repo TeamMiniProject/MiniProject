@@ -44,7 +44,7 @@ int main()
             break;
 
         case 7:
-            buy_item(item, cash, count); // 물건 구입과 동시에 reward point 정립하기 
+            buy_item(item, &cash, count); // 물건 구입과 동시에 reward point 정립하기 
             break;
 
         case 8:
@@ -52,7 +52,7 @@ int main()
             break;
 
         case 9:
-            check_point(cash); // 적립된 포인트 확인 
+            check_point(&cash); // 적립된 포인트 확인 
             break;
 
         case 0:
