@@ -215,10 +215,10 @@ int load_file(Item *item, char filename[100]) // 파일에서 읽어오는 함수
     return count;
 }
 
-void input_money(Cash cash) // 현금을 자판기에 투입하는 함수
+void input_money(Cash *cash) // 현금을 자판기에 투입하는 함수
 {
     printf("자판기에 투입할 현금 금액은 얼마입니까? ");
-    scanf("%d", &cash.input_cash);
+    scanf("%d", &cash->input_cash);
 
     printf("\n금액이 투입 완료되었습니다.\n");
 }
@@ -303,9 +303,9 @@ void math_reward(Cash cash ,int buy_money) // 포인트 계산 함수 ->> 구입한 금액의
     cash.reward_point = buy_money * 0.03;
 }
 
-void check_money(Cash cash) // 투입된 금액을 확인하는 함수
+void check_money(Cash *cash) // 투입된 금액을 확인하는 함수
 {
-    printf("현재 자판기에 투입된 금액 : %d\n", cash.input_cash);
+    printf("현재 자판기에 투입된 금액 : %d\n", cash->input_cash);
 }
 
 void check_point(Cash cash) // 현재 보유한 포인트 잔액 확인 기능
