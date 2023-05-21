@@ -222,7 +222,7 @@ void input_money(Cash *cash) // 현금을 자판기에 투입하는 함수
     printf("\n금액이 투입 완료되었습니다.\n");
 }
 
-void buy_item(Item *item, Cash cash, int count) // 물건을 구매하는 함수
+void buy_item(Item *item, Cash *cash, int count) // 물건을 구매하는 함수
 {
     if (count == 0) {
         printf("등록된 물건이 없습니다.\n");
@@ -235,7 +235,7 @@ void buy_item(Item *item, Cash cash, int count) // 물건을 구매하는 함수
 
     char buyitem_name[100];
     int quantity;
-    char point_check;
+    char point_check[2];
 
     printf("구매할 물건의 이름을 입력하세요: ");
     scanf("%s", buyitem_name);
@@ -243,8 +243,9 @@ void buy_item(Item *item, Cash cash, int count) // 물건을 구매하는 함수
     printf("구매할 물건의 수량을 입력하세요: ");
     scanf("%d", &quantity);
 
-    printf("포인트 적립을 하시겠습니까? ");
-    scanf("%s", point_check);
+    printf("포인트 적립을 하시겠습니까? (Y/N) : ");
+    scanf("%1s", point_check);
+    printf("\n");
 
     int buy_total_price = 0;
     int found = 0;
@@ -255,21 +256,21 @@ void buy_item(Item *item, Cash cash, int count) // 물건을 구매하는 함수
         {
             buy_total_price = item[i].price * quantity;
 
-            strcpy(item[i].is_pointsave, &point_check);
+            strcpy(item[i].is_pointsave, point_check);
 
-            if (cash.input_cash >= buy_total_price) 
+            if (cash->input_cash >= buy_total_price) 
             {
-                printf("%s %d개를 구매합니다.\n", item[i].item_Name, quantity);
-                cash.input_cash -= buy_total_price;
+                printf("%s %d개를 구매합니다.\n\n", item[i].item_Name, quantity);
+                cash->input_cash -= buy_total_price;
 
-                if (item[i].is_pointsave, "Y")
-                    math_reward(cash, count);  // 硫붿뒪 由ъ썙?뱶 ?븿?닔 ?닔?젙 諛? 援ы쁽?븯湲?
+                if (strcmp(item[i].is_pointsave, "Y") == 0)
+                    math_reward(cash, buy_total_price);  
 
                 else 
                     printf("포인트 적립을 하지 않습니다.\n");
 
                 printf("총 구매한 물건의 가격은 %d입니다.\n\n", buy_total_price);
-                printf("구매가 완료되었습니다.\n");
+                printf("구매가 완료되었습니다.\n\n");
                 found = 1;
                 break;
             } 
@@ -287,19 +288,13 @@ void buy_item(Item *item, Cash cash, int count) // 물건을 구매하는 함수
         printf("해당하는 이름의 물건이 없습니다.\n");
     }
 
-    printf("현재 자판기에 투입된 남은 금액 : %d\n", cash.input_cash);
+    printf("현재 자판기에 투입된 남은 금액 : %d\n", cash->input_cash);
 
-//돈이 얼마있는지 보여준 후 //check_money(Item *item, int count) // 투입된 금액을 확인하는 함수
-//메뉴판을 보여주고        // print_list 함수 사용
-//고객이 물품의 이름과 수량을 결정  // 함수 사용 X 그냥 이름과 수량 입력 하기
-//포인트 적립 유무 후 Buy         //구조체 멤버에 있음  char is_pointsave; 포인트 적립 유무
-//총 구입할 물품의 가격 보여주기
-//남은 돈 보여주기 (거스름돈) //exchange_money(Item *item, int count) // 거스름돈 함수
 }
 
-void math_reward(Cash cash ,int buy_money) // 포인트 계산 함수 ->> 구입한 금액의 5%정도를 적립하는 것으로 결정
+void math_reward(Cash *cash ,int buy_money) // 포인트 계산 함수 ->> 구입한 금액의 5%정도를 적립하는 것으로 결정
 {
-    cash.reward_point = buy_money * 0.03;
+    cash->reward_point += buy_money * 0.03;
 }
 
 void check_money(Cash *cash) // 투입된 금액을 확인하는 함수
@@ -307,7 +302,7 @@ void check_money(Cash *cash) // 투입된 금액을 확인하는 함수
     printf("현재 자판기에 투입된 금액 : %d\n", cash->input_cash);
 }
 
-void check_point(Cash cash) // 현재 보유한 포인트 잔액 확인 기능
+void check_point(Cash *cash) // 현재 보유한 포인트 잔액 확인 기능
 {
-    printf("현재까지 적립된 포인트 금액 : %d\n", cash.reward_point);
+    printf("현재까지 적립된 포인트 금액 : %d\n", cash->reward_point);
 }
