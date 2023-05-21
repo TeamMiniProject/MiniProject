@@ -33,10 +33,10 @@ int load_file(Item *item, int count, char filename[100]); // 파일에서 읽어
 
 void input_money(Cash *cash); // 현금을 자판기에 투입하는 함수
 
-void buy_item(Item *item, Cash cash, int count); // 물건을 구매하는 함수
+void buy_item(Item *item, Cash *cash, int count); // 물건을 구매하는 함수
 
-void math_reward(Cash cash ,int buy_money); // 포인트 계산 함수
+void math_reward(Cash *cash ,int buy_money); // 포인트 계산 함수
 
 void check_money(Cash *cash); // 투입된 금액을 확인하는 함수
 
-void check_point(Cash cash); // 현재 보유한 포인트 잔액 확인 기능
+void check_point(Cash *cash); // 현재 보유한 포인트 잔액 확인 기능
