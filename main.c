@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "vending.h"
 
 int main()
@@ -11,63 +8,59 @@ int main()
     int menuNumber;
     int count = 0;
 
-    printf("\n***** ì›í•˜ëŠ” ë©”ë‰´ *****\n");
-    printf("1. ë¬¼ê±´ ì¶”ê°€\n");
-    printf("2. ë¬¼ê±´ ì¡°íšŒ\n");
-    printf("3. ìˆ˜ì •\n");
-    printf("4. ë¬¼ê±´ ì‚­ì œ\n");
-    printf("5. íŒŒì¼ì €ì¥\n");
-    printf("6. í˜„ê¸ˆ íˆ¬ì…\n");
-    printf("7. ë¬¼ê±´ êµ¬ì…\n");
-    printf("8. íˆ¬ì…ëœ ê¸ˆì•¡ í™•ì¸\n");
-    printf("9. ë³´ìœ í•œ í¬ì¸íŠ¸ ì”ì•¡ í™•ì¸\n");
-    printf("0. ì¢…ë£Œ\n\n");
-    printf("=> ì›í•˜ëŠ” ë©”ë‰´ëŠ”? ");
-    scanf("%d", &menu);
-
     count = load_file(item, name);
 
     while (1)
     {
         menuNumber = menu();
+
         switch (menuNumber)
         {
         case 1:
-            count = add_item(item, count); // ë¬¼ê±´ ì¶”ê°€í•˜ëŠ” ë©”ë‰´ 
+            count = add_item(item, count); // ¹°°Ç Ãß°¡ÇÏ´Â ¸Ş´º 
             break;
+
         case 2:
-            print_list(item, count); // ë¬¼ê±´ ì¡°íšŒí•˜ëŠ” ë©”ë‰´ 
+            print_list(item, count); // ¹°°Ç Á¶È¸ÇÏ´Â ¸Ş´º 
             break;
+
         case 3:
-            updated_item(item, count); // ë¬¼ê±´ ì´ë¦„ ë° ê°€ê²© ìˆ˜ì • 
+            updated_item(item, count); // ¹°°Ç ÀÌ¸§ ¹× °¡°İ ¼öÁ¤ 
             break;
+
         case 4:
-            count = delete_item(item, count); // ë¬¼ê±´ ì‚­ì œ
+            count = delete_item(item, count); // ¹°°Ç »èÁ¦
             break;
+
         case 5:
-            save_file(item, count, name); // ë‚˜ì¤‘ì— íŒŒì¼ ë„¤ì„ í•¨ìˆ˜ ë°”ê¾¸ê¸°
+            save_file(item, count, name); // ³ªÁß¿¡ ÆÄÀÏ ³×ÀÓ ÇÔ¼ö ¹Ù²Ù±â
             break;
+
         case 6:
-            input_money(cash); // ëˆ íˆ¬ì… 
+            input_money(cash); // µ· ÅõÀÔ 
             break;
+
         case 7:
-            buy_item(item, cash, count); // ë¬¼ê±´ êµ¬ì…ê³¼ ë™ì‹œì— reward point ì •ë¦½í•˜ê¸° 
+            buy_item(item, cash, count); // ¹°°Ç ±¸ÀÔ°ú µ¿½Ã¿¡ reward point Á¤¸³ÇÏ±â 
             break;
+
         case 8:
-            check_money(cash); //íˆ¬ì…ê¸ˆì•¡ í™•ì¸
+            check_money(cash); //ÅõÀÔ±İ¾× È®ÀÎ
             break;
+
         case 9:
-            check_point(cash); // ì ë¦½ëœ í¬ì¸íŠ¸ í™•ì¸ 
+            check_point(cash); // Àû¸³µÈ Æ÷ÀÎÆ® È®ÀÎ 
             break;
+
         case 0:
-            printf("ì¢…ë£Œí•˜ê² ìŠµë‹ˆë‹¤.\n");
+            printf("Á¾·áÇÏ°Ú½À´Ï´Ù.\n");
             return 0;
+
         default:
-            printf("ì—†ëŠ” ë©”ë‰´ ë²ˆí˜¸ì…ë‹ˆë‹¤.\n");
-            printf("ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”.\n");
+            printf("¾ø´Â ¸Ş´º ¹øÈ£ÀÔ´Ï´Ù.\n");
+            printf("´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.\n");
         }
     }
-
     return 0;
 }
 
