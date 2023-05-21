@@ -13,19 +13,19 @@ typedef struct
 
 typedef struct
 {
-    int input_cash; //??Œê¸°ì— ?“¤?–´ê°? ?˜„ê¸?
-    int reward_point; // ë¬¼ê±´?„ ?‚¬ê³? ? ë¦½í•œ ?¬?¸?Š¸
+    int input_cash; //ÀÚÆÇ±â¿¡ µé¾î°£ Çö±İ
+    int reward_point; // ¹°°ÇÀ» »ç°í Àû¸³ÇÑ Æ÷ÀÎÆ®
 } Cash;
 
 int menu(); // ¸Ş´º
 
 int add_item(Item *item, int count); // ¹°°Ç Ãß°¡ ÇÔ¼ö
 
-void print_list(Item *item, int count); // ì¡°íšŒ ?•¨?ˆ˜
+void print_list(Item *item, int count); // ¹°°Ç Á¶È¸ÇÏ´Â ¸Ş´º
 
-void updated_item(Item *item, int count); // ?ˆ˜? • ?•¨?ˆ˜
+void updated_item(Item *item, int count); // ¹°°Ç ÀÌ¸§, °¡°İ ¹× ¼ö·® ¼öÁ¤ 
 
-int delete_item(Item *item, int count); // ë¬¼ê±´ ?‚­? œ ?•¨?ˆ˜
+int delete_item(Item *item, int count); // ¹°°Ç »èÁ¦
 
 void save_file(Item *item, int count, char filename[100]); // ÆÄÀÏ ÀúÀå ÇÔ¼ö
 
@@ -33,10 +33,10 @@ int load_file(Item *item, int count, char filename[100]); // ÆÄÀÏ¿¡¼­ ÀĞ¾î¿À´Â Ç
 
 void input_money(Cash *cash); // Çö±İÀ» ÀÚÆÇ±â¿¡ ÅõÀÔÇÏ´Â ÇÔ¼ö
 
-void buy_item(Item *item, Cash *cash, int count); // ë¬¼ê±´?„ êµ¬ë§¤?•˜?Š” ?•¨?ˆ˜
+void buy_item(Item *item, Cash *cash, int count); // ¸Ş´º ¸®½ºÆ®¸¦ º¸°í ¹°°ÇÀ» ±¸¸ÅÇÏ´Â ÇÔ¼ö
 
 void math_reward(Cash *cash ,int buy_money); // Æ÷ÀÎÆ® °è»ê ÇÔ¼ö
 
-void check_money(Cash *cash); // ?ˆ¬?…?œ ê¸ˆì•¡?„ ?™•?¸?•˜?Š” ?•¨?ˆ˜
+void check_money(Cash *cash); // ÀÚÆÇ±â¿¡ ÅõÀÔµÈ ±İ¾×À» È®ÀÎÇÏ´Â ÇÔ¼ö
 
 void check_point(Cash *cash); // ÇöÀç º¸À¯ÇÑ Æ÷ÀÎÆ® ÀÜ¾× È®ÀÎ ±â´É
