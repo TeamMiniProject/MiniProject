@@ -28,7 +28,7 @@ int main()
             break;
 
         case 3:
-            updated_item(item, count); // 물건 이름 및 가격 수정 
+            updated_item(item, count); // 물건 이름, 가격 및 수량 수정 
             break;
 
         case 4:
@@ -36,27 +36,27 @@ int main()
             break;
 
         case 5:
-            save_file(item, count, filename); // 나중에 파일 네임 함수 바꾸기
+            save_file(item, count, filename); // 파일 저장 함수
             break;
 
         case 6:
-            input_money(&cash); // 돈 투입 
+            input_money(&cash); // 자판기에 현금을 투입
             break;
 
         case 7:
-            buy_item(item, &cash, count); // 물건 구입과 동시에 reward point 정립하기 
+            buy_item(item, &cash, count); // 메뉴 리스트를 보고 물건 구입
             break;
 
         case 8:
-            check_money(&cash); //투입금액 확인
+            check_money(&cash); //자판기에 투입된 금액 확인
             break;
 
         case 9:
-            check_point(&cash); // 적립된 포인트 확인 
+            check_point(&cash); // 물건을 사고 적립한 포인트 확인 
             break;
 
         case 0:
-            printf("종료하겠습니다.\n");
+            printf("종료하겠습니다.\n"); // 종료
             return 0;
 
         default:
